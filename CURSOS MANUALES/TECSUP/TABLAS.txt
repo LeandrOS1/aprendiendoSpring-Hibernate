@@ -1,0 +1,176 @@
+/*tablas del sistema general*/
+select * from TSUBSISTEMAID;  --Descripcion por idioma de los subsistemas 
+select * from TSUBSISTEMATRANSACCIONESID;
+select * from TSUBSISTEMATRANSACCIONES WHERE CSUBSISTEMA='07' AND CTRANSACCION='2000';
+select * from tcompaniatransacciones WHERE CSUBSISTEMA='07' AND CTRANSACCION='2000';
+select * from tcompaniasubsistematransaccion;
+select * from TENTIDAD;
+select * from TCAMPOSCONSULTABLESID;
+select B.TABLABASE,  A.CCAMPO , B.CAMPOBASE, A.DESCRIPCION 
+from TCAMPOSCONSULTABLES A , TCAMPOSCONSULTABLESID B
+where A.CCAMPO = B.CCAMPO AND 
+A.CCAMPO IN ( select B.CCAMPO from TCAMPOSCONSULTABLESID B WHERE B.tablabase ='TPERSONACONVENIOSCREDITO')
+AND  B.tablabase ='TPERSONACONVENIOSCREDITO'; -- descripciones / diccionario de datos
+select * from TRESULTADOS;
+select * from TFORMATOXML where csubsistema='05' and ctransaccion='2000' and fhasta='2999-12-31 00:00:00';
+SELECT * FROM TLOGMENSAJES;
+
+SELECT * FROM TLOGMENSAJESXML;
+
+
+/*parametrizaciones*/
+select * from TGRUPOSPRODUCTO where csubsistema='04' and cgrupoproducto='1';
+select * from TPRODUCTO where csubsistema='04' and cgrupoproducto='2';
+
+select * from TPRODUCTOLIQUIDACION;
+select * from TREQUERIDOPRODUCTOS;
+select * from TREQUERIDOJURIDICOS;
+select * from TREQUERIDONATURALES;
+select * from TPRODUCTOMONEDA;
+select * from trequeridodocumentos;
+SELECT * FROM TtIPOSDOCUMENTOPERSONA;
+select * from TESTATUSCUENTA WHERE csubsistema='09' ;
+select * from TPRODUCTOESTATUS WHERE csubsistema='07' ;
+select * from TPRODUCTOCATEGORIATASAS;
+select * from TPRODUCTOTASAS;
+
+
+select * from TCOMANDOS;
+select * from TCOMANDOSMANTENIMIENTO where ctransaccion='2000' and csubsistema='07' AND ACTIVADO='1';
+select * from TTRANSACCIONRUBROS where csubsistema='04' and ctransaccion='6036';
+select * from TCOMANDOSRUBRO where csubsistema='04' and ctransaccion='6036';
+select * from TTRANSACCIONRUBROS where csubsistema='04' and ctransaccion='6036';
+
+select * from TCOMANDOSTRANSACCION;
+select * from TTIPOSCOMANDO;
+
+/**/
+select * from TPRODUCTOCAPTACIONESPLAZO;
+select * from TPRODUCTOCAPTACIONESVISTA;
+select * from TPRODUCTOCOLOCACIONES;
+select * from TPRODUCTOLINEASCREDITO;
+select * from TPRODUCTOCOMERCIOEXTERIOR;
+select * from TMONEDACAPTACIONESPLAZO;
+select * from TMONEDACAPTACIONESVISTA;
+select * from TMONEDACOLOCACIONES;
+select * from TMONEDALINEASCREDITO;
+select * from TMONEDACOMERCIOEXTERIOR;
+/**/
+select * from TPRODUCTOESTRUCTURACUENTA;
+
+select * from tformaspagoid;
+select * from tformaspago;
+select * from tformasdesembolso;
+
+select * from ttasasreferenciales;
+select * from ttarifarioproducto;
+
+
+select * from TCOMPANIAPARAMETROSSISTEMA;
+select * from TPARAMETROSSISTEMA;
+select * from TRELACIONPRODUCTO;
+
+
+
+
+/*tablas contables*/
+select * from tconceptos where cconcepto='36';
+select * from TGRUPOBALANCE;
+select * from ttransaccionrubros WHERE CSUBSISTEMA='03' AND CTRANSACCION='6501';
+select * from ttransaccionrubrosdefinicion WHERE CSUBSISTEMA='03' AND CTRANSACCION='6501';
+where cconcepto='36';
+
+select * from TCLASIFICACIONCONTABLEID;
+select * from TCLASIFICACIONCONTABLE;
+select * from TCATEGORIAS where categoria in ('PLAEFE','TRAVP'); 
+select * from TCATEGORIASDETALLE where categoria in ('PLAEFE','TRAVP');
+select * from tgrupocategoriasubsistema order by csubsistema, cgrupobalance, categoria; 
+select * from TPRODUCTOTASAS; --donde se guardan las tasas
+
+select * from TGRUPOSPRODUCTOCODIGOCONTABLE;
+select * from TPRODUCTOCODIGOCONTABLE;
+select * from TAGRUPACIONCONTABLE;
+select * from TAGRUPACIONCONTABLECODIGO;
+select * from TMONEDACODIGOCONTABLE;
+SELECT * FROM TCUENTACODIGOCONTABLE;
+select * from TCLASIFICACIONCONTABLE;
+select * from TCLASIFICACIONCODIGOCONTABLE;
+select * from TOFICINASUCURSALCODIGOCONTABLE;
+SELECT * FROM TCATALOGOCUENTAS;
+
+
+select * from TTRANSACCIONRUBROSDEFINICION where csubsistema='03' and ctransaccion='7021';
+select * from TSALDOS where ccuenta='420100000095';
+select * from TMOVIMIENTOS where numeromensaje='PC2011Apr15110210000289000'
+ ccuenta='420100000095';
+select * from FITBANKV3.TFORMATOXML where csubsistema = 07 and ctransaccion = 3007;
+
+
+
+
+
+/*reporteador*/
+select * from TFORMATOREPORTEID; --WHERE CFORMATOREPORTE IN ('OBANCOMONTOACUM','OBANCOMONMAYOR','REPOCOMPARATIVO');
+select * from TREPREPORTES; --WHERE CREPORTE IN ('OBANCOMONTOACUM','OBANCOMONMAYOR','REPOCOMPARATIVO');
+select * from TREPPARAMETROS; --WHERE CESTRUCTURA IN ('OBANCOMONTOACUM','OBANCOMONMAYOR','REPOCOMPARATIVO');
+select * from TREPESTRUCTURACAMPOS; --WHERE CESTRUCTURA IN ('OBANCOMONTOACUM','OBANCOMONMAYOR','REPOCOMPARATIVO');
+select * from TREPESTRUCTURA; --WHERE CESTRUCTURA IN ('OBANCOMONTOACUM','OBANCOMONMAYOR','REPOCOMPARATIVO');
+select * from TREPESTRUCTURACAMPOSID; --WHERE CESTRUCTURA IN ('OBANCOMONTOACUM','OBANCOMONMAYOR','REPOCOMPARATIVO');
+select * from TREPESTRUCTURAID; --WHERE CESTRUCTURA IN ('OBANCOMONTOACUM','OBANCOMONMAYOR','REPOCOMPARATIVO');
+select * from TREPREPORTESID; -- WHERE CREPORTE IN ('OBANCOMONTOACUM','OBANCOMONMAYOR','REPOCOMPARATIVO');
+
+/*Formularios caja*/
+select * from tFormatoComportamiento where csubsistema = '03' and ctransaccion = '6407';
+select * from tFormatoCamposEtiqueta; --where csubsistema = '03' and ctransaccion = '6407';
+select * from tFormatoCampos; --where csubsistema = '03' and ctransaccion = '6407';
+select * from tFormatobloquecriterio; --where csubsistema = '03' and ctransaccion = '6407';
+select * from tFormatobloquecamposetiqueta; --where csubsistema = '03' and ctransaccion = '6407';
+select * from tFormatobloquecampos; --where csubsistema = '03' and ctransaccion = '6407';
+select * from tFormatobloque; --where csubsistema = '03' and ctransaccion = '6407';
+select * from TFORMATOCAMPOSID; --where csubsistema = '03' and ctransaccion = '6407';
+select * from TFORMATOBLOQUECAMPOSID; --where csubsistema = '03' and ctransaccion = '6407';
+select * from TFORMATOBLOQUEID; --where csubsistema = '03' and ctransaccion = '6407';
+
+/*listas de valores especial - json*/
+select * from tformatolistavalorestitulo; -- where listavalor = 'requeridonaturales';
+select * from tformatolistavaloresetiquetas; --where listavalor = 'requeridonaturales';
+select * from tformatolistavalorescampos; --where listavalor = 'requeridonaturales';
+select * from tformatolistavalorescamposid; --where listavalor = 'requeridonaturales';
+select * from tformatolistavalores; --where listavalor = 'requeridonaturales';
+select * from tformatolistavaloresid; --where listavalor = 'requeridonaturales';
+
+
+
+/**eventos*/
+
+SELECT * FROM TSUBSISTEMAEVENTOSID;
+SELECT * FROM TSUBSISTEMAEVENTOS;
+select * from TSUBSISTEMAEVENTOSTRANSACCION;
+
+
+
+/**TRANSACCIONES FIT - SIAF - MAPEOS*/
+SELECT * FROM TESTRUCTURAMENSAJEMAPEOVALORES WHERE VALOR_ORIGEN = '03670601' AND CESTRUCTURA_DESTINO = 'SIAF_CONFLIQCOBRO' ;
+SELECT * FROM TESTRUCTURAMENSAJEID WHERE CESTRUCTURA = 'SIAF_CONFLIQCOBRO' ;
+SELECT * FROM TESTRUCTURAMENSAJE WHERE CESTRUCTURA = 'SIAF_CONFLIQCOBRO' ;
+SELECT * FROM TESTRUCTURAMENSAJECAMPOSID WHERE CESTRUCTURA = 'SIAF_CONFLIQCOBRO' ;
+SELECT * FROM TESTRUCTURAMENSAJECAMPOS WHERE CESTRUCTURA = 'SIAF_CONFLIQCOBRO' ;
+SELECT * FROM TESTRUCTURAMENSAJEMAPEO WHERE CESTRUCTURA_DESTINO = 'SIAF_CONFLIQCOBRO' ;
+SELECT * FROM TESTRUCTURAMENSAJEMAPEODESTINO WHERE CESTRUCTURA_DESTINO = 'SIAF_CONFLIQCOBRO' ;
+
+
+/*tablas de procesos batch*/
+select * from tcodigosprocesarid;
+select * from tcodigosprocesar;
+select * from tsubsistemaprocesos;
+select * from tsubsistemaeventosid;
+select * from tsubsistemaeventos;
+select * from tsubsistemaeventostransaccion;
+select * from TCONTROLPROCESOBATCH WHERE FCONTABLE='2011-05-27'; --1 
+select * from TCUENTASBATCHPROCESAR WHERE fproceso='2011-05-27';  --2
+select * from TCUENTAFECHACONTABLE WHERE fultimocierre='2011-05-27'; --3
+select * from TLOGPROCESOBATCH WHERE FCONTABLE='2011-05-27'; --4
+
+--inicializa el batch por subsistema
+select * from TPROCESOSBATCH;  --1
+select * from TSUBSISTEMAPROCESOS;  --2 (aqui parametrizo los comandos por subsistema)
